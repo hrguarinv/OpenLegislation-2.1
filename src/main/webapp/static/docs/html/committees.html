@@ -1,0 +1,440 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Senate Committee API &mdash; Open Legislation 2.0-alpha documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Open Legislation 2.0-alpha documentation" href="index.html"/>
+        <link rel="next" title="NYS Laws API" href="laws.html"/>
+        <link rel="prev" title="Senate Agenda API" href="agendas.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="reference.html" class="fa fa-home"> Open Legislation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html"><strong>Open Legislation v2.0 API Docs</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#what-is-this">What is this?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#api-usage">API Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#legislative-content-types">Legislative Content Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#terminology">Terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bills.html"><strong>Bills and Resolutions API</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bills.html#get-a-single-bill">Get a single bill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bills.html#get-pdf-of-bill-text">Get PDF of bill text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bills.html#get-a-list-of-bills">Get a list of bills</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bills.html#search-for-bills">Search for bills</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bills.html#get-bill-updates">Get bill updates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="calendars.html"><strong>Senate Calendar API</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="calendars.html#get-a-single-calendar">Get a single calendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendars.html#get-a-listing-of-calendars">Get a listing of calendars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendars.html#search-for-calendars">Search for calendars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendars.html#get-calendar-updates">Get calendar updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendars.html#get-specific-calendar-updates">Get specific calendar updates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="agendas.html"><strong>Senate Agenda API</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="agendas.html#get-a-single-agenda">Get a single agenda</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href=""><strong>Senate Committee API</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#get-a-current-committee-version">Get a current committee version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-a-committee-version-at-specific-time">Get a committee version at specific time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-committee-history">Get committee history</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-all-current-committees">Get all current committees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#search-for-committees">Search for committees</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="laws.html"><strong>NYS Laws API</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="laws.html#get-a-list-of-law-ids">Get a list of law ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="laws.html#get-the-law-structure">Get the law structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="laws.html#get-a-law-sub-document">Get a law sub document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="laws.html#search-for-law-documents">Search for law documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="laws.html#get-law-updates">Get law updates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transcripts_floor.html"><strong>Senate Floor Transcripts API</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transcripts_floor.html#get-a-single-transcript">Get a single Transcript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transcripts_floor.html#get-a-transcript-pdf">Get a transcript pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transcripts_floor.html#get-a-list-of-transcripts">Get a list of transcripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transcripts_ph.html"><strong>Public Hearing Transcripts API</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transcripts_ph.html#get-a-single-public-hearing">Get a single Public Hearing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transcripts_ph.html#get-a-public-hearing-pdf">Get a public hearing pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transcripts_ph.html#get-a-list-of-public-hearings">Get a list of public hearings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="members.html"><strong>Senate Members API</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="members.html#get-a-single-member">Get a single Member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="members.html#get-a-list-of-members">Get a list of members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="members.html#search-for-members">Search for members</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="agg_updates.html"><strong>Aggregate Updates API</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="agg_updates.html#get-aggregate-updates">Get aggregate updates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="search_api.html"><strong>Search APIs</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="search_api.html#term">term</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_api.html#sort">sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_api.html#search-response">Search Response</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="reference.html">Open Legislation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="reference.html">Docs</a> &raquo;</li>
+      
+    <li><strong>Senate Committee API</strong></li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/committees.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="senate-committee-api">
+<h1><strong>Senate Committee API</strong><a class="headerlink" href="#senate-committee-api" title="Permalink to this headline">¶</a></h1>
+<p>In OpenLegislation, committee data is processed in a way that tracks the membership of each committee over time.
+Committees are stored as committee versions, each of which represent a time period where there were no changes in
+committee membership for a specific committee.  Committee versions contain a list of members in the committee,
+information on where and when the committee meets, and the dates when the committee version began and was reformed.</p>
+<div class="section" id="get-a-current-committee-version">
+<h2>Get a current committee version<a class="headerlink" href="#get-a-current-committee-version" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Assembly committee data is currently not sent to us at this time. chamber must be &#8216;senate&#8217;.</p>
+</div>
+<p><strong>Usage</strong></p>
+<div class="highlight-python"><pre>/api/3/committees/{session}/{chamber}/{committeeName}</pre>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-python"><pre>/api/3/committees/2013/senate/Cultural%20Affairs,%20Tourism,%20Parks%20and%20Recreation
+(Get the current version of the Cultural Affairs, Tourism, Parks and Recreation committee)</pre>
+</div>
+<p><strong>Sample Response</strong></p>
+<p>See <a class="reference internal" href="#committee-version-response">committee version response</a></p>
+</div>
+<div class="section" id="get-a-committee-version-at-specific-time">
+<h2>Get a committee version at specific time<a class="headerlink" href="#get-a-committee-version-at-specific-time" title="Permalink to this headline">¶</a></h2>
+<p>This request will return a committee version (if one exists) corresponding to the given committee that was created
+before or on the given time and reformed after the given time.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight-python"><pre>/api/3/committees/{session}/{chamber}/{committeeName}/{ISODateTime}</pre>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-python"><pre>/api/3/committees/2013/senate/Finance/2014-03-01T09:30:00
+(Get the codes committee at 9:30 AM on March 1st, 2014)</pre>
+</div>
+<p id="committee-version-response"><strong>Sample Response</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;success&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;message&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;responseType&quot;</span> <span class="o">:</span> <span class="s2">&quot;committee&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;result&quot;</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;chamber&quot;</span> <span class="o">:</span> <span class="s2">&quot;SENATE&quot;</span><span class="p">,</span>     <span class="c1">// The chamber of this committee (SENATE or ASSEMBLY)</span>
+    <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Finance&quot;</span><span class="p">,</span>       <span class="c1">// The name of this committee</span>
+    <span class="s2">&quot;sessionYear&quot;</span> <span class="o">:</span> <span class="mi">2013</span><span class="p">,</span>     <span class="c1">// The session year of this committee version</span>
+    <span class="s2">&quot;referenceDate&quot;</span> <span class="o">:</span> <span class="s2">&quot;2014-02-28T11:25:44&quot;</span><span class="p">,</span>  <span class="c1">// The date and time that this configuration</span>
+                                              <span class="c1">//  of committee members was reported</span>
+    <span class="s2">&quot;reformed&quot;</span> <span class="o">:</span> <span class="s2">&quot;2014-03-03T17:09:09&quot;</span><span class="p">,</span>       <span class="c1">// The date and time that this configuration</span>
+                                              <span class="c1">//  of committee members was replaced</span>
+                                              <span class="c1">// If null, then this is the current committee version</span>
+    <span class="s2">&quot;location&quot;</span> <span class="o">:</span> <span class="s2">&quot;Room 124 CAP&quot;</span><span class="p">,</span>  <span class="c1">// The location where this committee meets</span>
+    <span class="s2">&quot;meetDay&quot;</span> <span class="o">:</span> <span class="s2">&quot;TUESDAY&quot;</span><span class="p">,</span>        <span class="c1">// The day of the week that this committee meets</span>
+    <span class="s2">&quot;meetTime&quot;</span> <span class="o">:</span> <span class="s2">&quot;11:00&quot;</span><span class="p">,</span>         <span class="c1">// The time of day that this committee meets</span>
+    <span class="s2">&quot;meetAltWeek&quot;</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>        <span class="c1">// True if this committee meets on alternate weeks</span>
+    <span class="s2">&quot;meetAltWeekText&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>       <span class="c1">// Describes the committee&#39;s alternate schedule if applicable</span>
+    <span class="s2">&quot;committeeMembers&quot;</span> <span class="o">:</span> <span class="p">{</span>        <span class="c1">// A listing of members in this committee</span>
+      <span class="s2">&quot;items&quot;</span> <span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;memberId&quot;</span> <span class="o">:</span> <span class="mi">376</span><span class="p">,</span>                   <span class="c1">// An arbitrary unique id used to identify members</span>
+                                              <span class="c1">//  in our database</span>
+          <span class="s2">&quot;shortName&quot;</span> <span class="o">:</span> <span class="s2">&quot;DEFRANCISCO&quot;</span><span class="p">,</span>        <span class="c1">// The committee member&#39;s lbdc shortname</span>
+          <span class="s2">&quot;sessionYear&quot;</span> <span class="o">:</span> <span class="mi">2013</span><span class="p">,</span>               <span class="c1">// The session year this member was active in</span>
+          <span class="s2">&quot;fullName&quot;</span> <span class="o">:</span> <span class="s2">&quot;John A. DeFrancisco&quot;</span><span class="p">,</span> <span class="c1">// The member&#39;s full name</span>
+          <span class="s2">&quot;districtCode&quot;</span> <span class="o">:</span> <span class="mi">50</span><span class="p">,</span>                <span class="c1">// A code designating the member&#39;s home district</span>
+          <span class="s2">&quot;sequenceNo&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>                   <span class="c1">// The member&#39;s position in the list of committee members</span>
+          <span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="s2">&quot;CHAIR_PERSON&quot;</span>            <span class="c1">// The member&#39;s role in the committee</span>
+                                            <span class="c1">//  Valid roles include:</span>
+                                            <span class="c1">//  &quot;CHAIR_PERSON&quot;, &quot;VICE_CHAIR&quot;, and &quot;MEMBER&quot;</span>
+        <span class="p">},</span>
+        <span class="p">...</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;size&quot;</span> <span class="o">:</span> <span class="mi">24</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-committee-history">
+<h2>Get committee history<a class="headerlink" href="#get-committee-history" title="Permalink to this headline">¶</a></h2>
+<p><strong>Usage</strong></p>
+<div class="highlight-python"><pre>/api/3/committees/{session}/{chamber}/{committeeName}/history</pre>
+</div>
+<p id="comm-history-params"><strong>Optional Params</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="8%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Values</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>full</td>
+<td>boolean</td>
+<td>(default false) Set to true to see the full committee responses instead of the summaries.</td>
+</tr>
+<tr class="row-odd"><td>limit</td>
+<td>string</td>
+<td>(default 50) Limit the number of results</td>
+</tr>
+<tr class="row-even"><td>offset</td>
+<td>number</td>
+<td>(default 1) Start results from offset</td>
+</tr>
+<tr class="row-odd"><td>order</td>
+<td>string</td>
+<td>(default &#8216;DESC&#8217;) Determines the order the committee responses.  Sorted by created date.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight-python"><pre>/api/3/committees/2013/senate/Aging/history  (Get 2013 history for the aging committee)
+/api/3/committees/2013/senate/Aging/history?limit=1&amp;order=ASC&amp;full=true
+(Get the first version of the Aging committee from 2013)</pre>
+</div>
+</div>
+<div class="section" id="get-all-current-committees">
+<h2>Get all current committees<a class="headerlink" href="#get-all-current-committees" title="Permalink to this headline">¶</a></h2>
+<p><strong>Usage</strong></p>
+<div class="highlight-python"><pre>/api/3/committees/{session}/{chamber}</pre>
+</div>
+<p><strong>Optional Params</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="8%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Values</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>full</td>
+<td>boolean</td>
+<td>(default false) Set to true to get full committee responses instead of summaries.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight-python"><pre>/api/3/committees/2013/senate?&amp;full=true
+(Get full responses for all current senate committees for session 2013)</pre>
+</div>
+</div>
+<div class="section" id="search-for-committees">
+<h2>Search for committees<a class="headerlink" href="#search-for-committees" title="Permalink to this headline">¶</a></h2>
+<p>Read our <a class="reference internal" href="search_api.html"><em>search API docs</em></a> for info on how to construct search terms.
+The committee search index is comprised of full committee responses
+(i.e. the json response returned when requesting a single committee)
+so query and sort strings will be based on that response structure.</p>
+<p><strong>Usage</strong></p>
+<p>Search across all session years</p>
+<div class="highlight-python"><pre>(GET) /api/3/committees/search?term=YOUR_TERM</pre>
+</div>
+<p>Search within a session year</p>
+<div class="highlight-python"><pre>(GET) /api/3/committees/{sessionYear}/search?term=YOUR_TERM</pre>
+</div>
+<p><strong>Required Params</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="23%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Values</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>term</td>
+<td>string</td>
+<td><a class="reference internal" href="search_api.html#search-term"><em>ElasticSearch query string</em></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Optional Params</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="17%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Values</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sort</td>
+<td>string</td>
+<td><a class="reference internal" href="search_api.html#search-sort"><em>ElasticSearch sort string</em></a></td>
+</tr>
+<tr class="row-odd"><td>current</td>
+<td>boolean</td>
+<td>(default true) Searches only current committee versions if true</td>
+</tr>
+</tbody>
+</table>
+<p>Also takes all <a class="reference internal" href="#comm-history-params"><em>committee history optional params</em></a> with the exception of order</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="laws.html" class="btn btn-neutral float-right" title="NYS Laws API"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="agendas.html" class="btn btn-neutral" title="Senate Agenda API"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, NY State Senate Technology Services.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.0-alpha',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
